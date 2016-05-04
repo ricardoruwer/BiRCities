@@ -10,9 +10,4 @@
         }
     ],
     "require": {},
-    "autoload": {
-        "psr-4": {
-            "Ruwer\\BRCities": "src"
-        }
-    },
 }
