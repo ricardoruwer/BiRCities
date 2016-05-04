@@ -1,0 +1,12 @@
+{
+    "name": "ruwer/brcities",
+    "description": "Full package with brazilian cities.",
+    "authors": [
+        {
+            "name": "Ricardo Ruwer",
+            "email": "ricardoruwer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
