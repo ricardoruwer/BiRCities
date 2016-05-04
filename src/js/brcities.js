@@ -76,7 +76,7 @@
     }
 
     //The URL to get cities
-    var url = "cities/" + state;
+    var url = "/cities/" + state;
 
     //Get the cities with Ajax
     var xmlhttp = new XMLHttpRequest();
@@ -110,7 +110,7 @@
    */
   Cities.prototype.states = function() {
     var stateInput = this.el.querySelectorAll(this.options.stateInput)[0];
-    var url = "states";
+    var url = "/states";
 
     //Placeholder for state <select>
     if (this.statePlaceholder) {
