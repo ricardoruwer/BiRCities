@@ -3,6 +3,7 @@
     "description": "Full package with brazilian cities.",
     "keywords": ["laravel", "brasil", "cidades", "estados"],
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Ricardo Ruwer",
