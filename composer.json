@@ -1,11 +1,18 @@
 {
     "name": "ruwer/brcities",
     "description": "Full package with brazilian cities.",
+    "keywords": ["laravel", "brasil", "cidades", "estados"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Ricardo Ruwer",
             "email": "ricardoruwer@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ruwer\\BRCities": "src"
+        }
+    },
 }
