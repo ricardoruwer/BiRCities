@@ -10,5 +10,10 @@
             "email": "ricardoruwer@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ruwer\\BRcities\\": "src"
+        }
+    }
 }
