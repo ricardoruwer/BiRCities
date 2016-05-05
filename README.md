@@ -116,7 +116,3 @@ Set **placeholders**:
 ```html
 <select name="state" class="js-state" value="PR"></select>
 ```
-
-## Demo
-
-http://codepen.io/ricardoruwer/pen/eZbrGJ
