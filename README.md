@@ -23,7 +23,7 @@ Open the file **config/app.php** and add to "providers":
 Let's publish the package files into your project. Run in your terminal:
 
 ```shell
-php artisan vendor:publish --provider="Ruwer\BRCities\BrcitiesServiceProvider"
+php artisan vendor:publish
 ```
 
 Now you have the following files in your project:
