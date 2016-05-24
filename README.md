@@ -97,7 +97,7 @@ var options = {
 }
 
 //Call the Script
-var cep = new Cep("#form", options);
+var cities = new Cities("#form", options);
 ```
 
 Set **placeholders**:
