@@ -28,11 +28,11 @@
     }
 
     //Get the user's selected form
-    this.el = document.querySelectorAll(this.arguments[0])[0];
+    this.el = document.querySelector(this.arguments[0]);
 
     //Get Inputs
-    var cityInput = this.el.querySelectorAll(this.options.cityInput)[0];
-    var stateInput = this.el.querySelectorAll(this.options.stateInput)[0];
+    var cityInput = this.el.querySelector(this.options.cityInput);
+    var stateInput = this.el.querySelector(this.options.stateInput);
 
     //Get the placeholders (defined by user)
     if (stateInput.firstChild) {
@@ -58,7 +58,7 @@
    * Get cities of the given state
    */
   Cities.prototype.cities = function(event) {
-    var cityInput = this.el.querySelectorAll(this.options.cityInput)[0];
+    var cityInput = this.el.querySelector(this.options.cityInput);
     var state = event.srcElement.value;
 
     //If the state is empty
@@ -109,7 +109,7 @@
    * Fill the <select> with all states
    */
   Cities.prototype.states = function() {
-    var stateInput = this.el.querySelectorAll(this.options.stateInput)[0];
+    var stateInput = this.el.querySelector(this.options.stateInput);
     var url = "/states";
 
     //Placeholder for state <select>
