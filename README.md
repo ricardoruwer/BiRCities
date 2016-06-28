@@ -94,7 +94,7 @@ Define the **class**:
 var options = {
   stateInput: ".js-state", //default
   cityInput:  ".js-city", //default
-  short: true //default (Abbreviated state names)
+  short: false //default (Long state names)
 }
 
 //Call the Script
