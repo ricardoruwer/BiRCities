@@ -1,14 +1,18 @@
-!(function() {
-  this.Cities = function() {
+!(function () {
+  this.Cities = function () {
     //Default options
     var defaults = {
       stateInput: ".js-state",
       cityInput: ".js-city",
+      short: false
     }
 
-    //Initialize plugin
-    this.options = defaults;
+    this.el = document.querySelector(arguments[0]);
+    if ( ! this.el) return false;
+
+    this.options = extendDefaults(defaults, arguments[1]);
     this.arguments = arguments;
+
     this.init();
   }
 
@@ -16,25 +20,10 @@
   /**
    * Initialize plugin
    */
-  Cities.prototype.init = function() {
-    //Form argument (default: <form>)
-    if (typeof this.arguments[0] === "undefined") {
-      this.arguments[0] = "form";
-    }
+  Cities.prototype.init = function () {
+    var cityInput = this.el.querySelector(this.options.cityInput),
+        stateInput = this.el.querySelector(this.options.stateInput);
 
-    //Get the user personal options
-    if (this.arguments[1] && typeof this.arguments[1] === "object") {
-      this.options = extendDefaults(this.options, this.arguments[1]);
-    }
-
-    //Get the user's selected form
-    this.el = document.querySelector(this.arguments[0]);
-
-    //Get Inputs
-    var cityInput = this.el.querySelector(this.options.cityInput);
-    var stateInput = this.el.querySelector(this.options.stateInput);
-
-    //Get the placeholders (defined by user)
     if (stateInput.firstChild) {
       this.statePlaceholder = stateInput.firstElementChild;
     }
@@ -58,17 +47,16 @@
    * Get cities of the given state
    */
   Cities.prototype.cities = function(event) {
-    var cityInput = this.el.querySelector(this.options.cityInput);
-    var state = event.srcElement.value;
+    var cityInput = this.el.querySelector(this.options.cityInput),
+        state = event.srcElement.value;
 
     //If the state is empty
-    if (!state) {
+    if ( ! state) {
       clearInput(cityInput);
 
       if (this.cityPlaceholder) {
         cityInput.appendChild(this.cityPlaceholder);
-      }
-      else {
+      } else {
         cityInput.innerHTML = ' ';
       }
 
@@ -78,23 +66,28 @@
     //The URL to get cities
     var url = "/cities/" + state;
 
-    //Get the cities with Ajax
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        //Clear old results
         clearInput(cityInput);
 
-        //The response
         var response = JSON.parse(xmlhttp.responseText);
 
         var city;
         for (city in response) {
           if (response.hasOwnProperty(city)) {
-            //Append the <option>
             var option = document.createElement("OPTION");
             option.value = city;
             option.text = response[city];
+
+            //Define the default value
+            if (cityInput.hasAttribute("value")) {
+              if (cityInput.getAttribute("value") == option.value) {
+                option.selected = true;
+                cityInput.removeAttribute("value");
+              }
+            }
+
             cityInput.appendChild(option);
           }
         }
@@ -108,31 +101,68 @@
   /**
    * Fill the <select> with all states
    */
-  Cities.prototype.states = function() {
-    var stateInput = this.el.querySelector(this.options.stateInput);
-    var url = "/states";
+  Cities.prototype.states = function () {
+    var stateInput = this.el.querySelector(this.options.stateInput),
+        url = "/states";
 
-    //Placeholder for state <select>
     if (this.statePlaceholder) {
       stateInput.appendChild(this.statePlaceholder);
     }
 
-    //Get the states with Ajax
+    var states = {
+      'AC': 'Acre',
+      'AL': 'Alagoas',
+      'AM': 'Amazonas',
+      'AP': 'Amapá',
+      'BA': 'Bahia',
+      'CE': 'Ceará',
+      'DF': 'Distrito Federal',
+      'ES': 'Espírito Santo',
+      'GO': 'Goiás',
+      'MA': 'Maranhão',
+      'MT': 'Mato Grosso',
+      'MS': 'Mato Grosso do Sul',
+      'MG': 'Minas Gerais',
+      'PA': 'Pará',
+      'PB': 'Paraíba',
+      'PR': 'Paraná',
+      'PE': 'Pernambuco',
+      'PI': 'Piauí',
+      'RJ': 'Rio de Janeiro',
+      'RN': 'Rio Grande do Norte',
+      'RO': 'Rondônia',
+      'RS': 'Rio Grande do Sul',
+      'RR': 'Roraima',
+      'SC': 'Santa Catarina',
+      'SE': 'Sergipe',
+      'SP': 'São Paulo',
+      'TO': 'Tocantins'
+    }
+
+    var self = this;
+
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         var response = JSON.parse(xmlhttp.responseText);
 
         var state;
         for (state in response) {
           if (response.hasOwnProperty(state)) {
-            //Append the <option>
             var option = document.createElement("OPTION");
-            option.text = option.value = state;
+
+            if (self.options.short) {
+              option.text = option.value = state;
+            } else {
+              option.value = state;
+              option.text = states[state];
+            }
 
             //Define the default value
-            if (stateInput.getAttribute("value") == option.value) {
-              option.selected = true;
+            if (stateInput.hasAttribute("value")) {
+              if (stateInput.getAttribute("value") == option.value) {
+                option.selected = true;
+              }
             }
 
             stateInput.appendChild(option);
@@ -169,6 +199,7 @@
         source[property] = properties[property];
       }
     }
+
     return source;
   }
 }());
