@@ -94,6 +94,7 @@ Define the **class**:
 var options = {
   stateInput: ".js-state", //default
   cityInput:  ".js-city", //default
+  short: true //default (Abbreviated state names)
 }
 
 //Call the Script
@@ -115,4 +116,5 @@ Set **placeholders**:
 
 ```html
 <select name="state" class="js-state" value="PR"></select>
+<select name="city" class="js-city" value="3595"></select>
 ```
