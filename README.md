@@ -1,4 +1,4 @@
-# BRCities for Laravel 5
+# BiRCities for Laravel 5
 - A **Laravel 5** package containing all Brazilian cities to your database.
 - Auto-fill the cities when you select the state. Built using **Vanilla JS**.
 - Works well with [Cep Package](https://github.com/ricardoruwer/Cep).
