@@ -1,4 +1,9 @@
 # BiRCities for Laravel 5
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/456ea02a81164a9c925cb137b97596f1)](https://www.codacy.com/app/ricardoruwer/BiRCities?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ricardoruwer/BiRCities&amp;utm_campaign=Badge_Grade)
+[![Total Downloads](https://poser.pugx.org/ruwer/brcities/downloads)](https://packagist.org/packages/ruwer/brcities)
+[![Build Status](https://img.shields.io/github/stars/ricardoruwer/bircities.svg)](https://github.com/ricardoruwer/bircities)
+
 - A **Laravel 5** package containing all Brazilian cities to your database.
 - Auto-fill the cities when you select the state. Built using **Vanilla JS**.
 - Works well with [Cep Package](https://github.com/ricardoruwer/Cep).
