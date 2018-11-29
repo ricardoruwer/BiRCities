@@ -5166,7 +5166,7 @@ class CitiesTableSeeder extends Seeder
             ["state" => "SP", "name" => "Mococa"],
             ["state" => "SP", "name" => "Mogi das Cruzes"],
             ["state" => "SP", "name" => "Mogi Guaçu"],
-            ["state" => "SP", "name" => "Moji Mirim"],
+            ["state" => "SP", "name" => "Mogi Mirim"],
             ["state" => "SP", "name" => "Mombuca"],
             ["state" => "SP", "name" => "Monções"],
             ["state" => "SP", "name" => "Mongaguá"],
